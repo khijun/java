@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="webhardMapper">
+	<select id="selectAll" resultType="webhard.webhardDTO">
+		select * from webhard
+	</select>
+	<select id="selectByNum" parameterType="int" resultType="webhard.webhardDTO">
+		select * from webhard where num = #{num}
+	</select>
+	<delete id="deleteWebhard" parameterType="int">
+		delete from webhard where num = #{num}
+	</delete>
+	<insert id="insertWebhard" parameterType="webhard.webhardDTO">
+		insert into webhard values(webhard_seq.nextval, #{fname}, #{ftime}, #{fsize})
+	</insert>
+</mapper>

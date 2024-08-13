@@ -4,7 +4,7 @@ import shop.CartProducts;
 
 public class Ex3 {
 	public static void main(String[] args) {
-		CartDAO dao = new CartDAO();
+		CartDAO dao = CartDAO.getCartDAO();
 		for(CartProducts dto : dao.viewCart()) {
 			System.out.println(dto);
 			System.out.println("1");
