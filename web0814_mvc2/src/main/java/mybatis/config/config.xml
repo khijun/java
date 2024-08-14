@@ -2,13 +2,9 @@
 <!DOCTYPE configuration PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
 	<!--mapper에서 매칭할 parmeter Type 별칭 설정-->
-	<typeAliases>
+	<typeAliases> 
 	</typeAliases>
-	
-	
 	<environments default="development">
-	
-		<!-- environment id를 구분하여 연결할 DB를 여려개 구성할 수 도 있음 -->
 		<environment id="development">
 			<transactionManager type="JDBC"/>
 				<dataSource type="POOLED">
@@ -18,12 +14,9 @@
 					<property name="password" value="tiger"/>
 				</dataSource>
 		</environment>
-		
 	</environments>
-	
-	<mappers>
-		<mapper resource="mybatis/sql/webhardMapper.xml"/> 
-		
-	</mappers>
 
+	<mappers>
+		<mapper resource="mybatis/sql/boardMapper.xml"/>
+	</mappers>
 </configuration>

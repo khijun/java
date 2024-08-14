@@ -10,7 +10,7 @@ public class webhardDAO {
 	private static webhardDAO dao = new webhardDAO();
 	private SqlSession session;
 	private webhardDAO(){
-		session = SqlMapConfig.getSqlMapInstance().openSession(false);
+		session = SqlMapConfig.getSqlMapInstance().openSession(true);
 	}
 	
 	public static webhardDAO getDAO() {
