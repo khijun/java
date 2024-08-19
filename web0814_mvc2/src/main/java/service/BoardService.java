@@ -55,7 +55,7 @@ public class BoardService {
 
 
     public BoardDto getMsg(int num) {
-        BoardDto dto = dao.selectOne(num, true);
+        BoardDto dto = dao.selectOne(num);
 
         dto.setTitle(dto.getTitle().replace (" ",  "&nbsp;"));
         dto.setContent(dto.getContent().replace(" ",  "&nbsp;")
@@ -65,7 +65,7 @@ public class BoardService {
     }
 
     public BoardDto getMsgForWrite(int num) {
-        return dao.selectOne(num, false);
+        return dao.selectOne(num);
     }
 
     public void writeMsg(String writer, String title, String content)
@@ -74,7 +74,7 @@ public class BoardService {
         if (writer  == null || writer.length()  == 0 ||
             title   == null || title.length()   == 0 ||
             content == null || content.length() == 0) {
-
+        	System.out.println("에러남?");
            throw new Exception("모든 항목이 빈칸 없이 입력되어야 합니다.");
         }
 

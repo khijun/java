@@ -40,7 +40,6 @@ public class BoardController extends HttpServlet {
                     new BoardService().getMsgList(pageNo));
             request.setAttribute("pgnList",
             		new BoardService().getPagination(pageNo));
-            System.out.println(pageNo);
             view = "list.jsp";
 
         } else if (com.equals("/view")){
@@ -71,7 +70,6 @@ public class BoardController extends HttpServlet {
             String writer  = request.getParameter("writer" );
             String title   = request.getParameter("title"  );
             String content = request.getParameter("content");
-
             try {
                 new BoardService().writeMsg(writer, title, content);
                 view = "redirect:list";

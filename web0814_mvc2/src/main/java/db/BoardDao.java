@@ -38,94 +38,23 @@ public class BoardDao {
     	param.put("listSize", listSize);
         return session.selectList("boardMapper.getList", param);
     }
-/*
-    // 지정된 글 번호를 가진 레코드 읽기
-    // hitsIncreased가 true이면 해당 글의 조회수를 1 증가시킴
-    //                 false이면 조회수를 증가시키지 않음
-    public BoardDto selectOne(int num, boolean hitsIncreased) {
 
-        BoardDto dto = new BoardDto();
-
-        try (
-            Connection conn = getConnection();
-            Statement stmt = conn.createStatement();
-
-            ResultSet rs = stmt.executeQuery(
-                    "select * from board where num=" + num);
-        ) {
-            if (rs.next()) {
-
-                // 글 데이터를 DTO에 저장
-                dto.setNum    (rs.getInt   ("num"    ));
-                dto.setWriter (rs.getString("writer" ));
-                dto.setTitle  (rs.getString("title"  ));
-                dto.setContent(rs.getString("content"));
-                dto.setRegtime(rs.getString("regtime"));
-                dto.setHits   (rs.getInt   ("hits"   ));
-
-                // 이글의 조회수를 증가시켜야 하는 경우
-                // (글 보기 화면을 위해 읽을 때)이면 조회수 1 증가
-                if (hitsIncreased) {
-                    stmt.executeUpdate(
-                          "update board set hits=hits+1 where num=" + num);
-                }
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-
-        return dto;
+    public BoardDto selectOne(int num) {
+    	return session.selectOne("boardMapper.getOne", num);
     }
-
-    // DTO에 담긴 내용으로 새로운 레코드 저장
-    public void insertOne(BoardDto dto) {
-
-        try (
-            Connection conn = getConnection();
-            Statement stmt = conn.createStatement();
-        ) {
-            stmt.executeUpdate(String.format(
-                    "insert into board " +
-                    "(writer, title, content, regtime, hits)" +
-                    "values ('%s', '%s', '%s', '%s', 0)",
-                    dto.getWriter(), dto.getTitle(), dto.getContent(),
-                    getCurrentTime()));
-
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    
+    public boolean insertOne(BoardDto dto) {
+    	dto.setRegtime(getCurrentTime());
+    	return session.insert("boardMapper.insert", dto) != 0?true:false;
     }
 
     // DTO에 담긴 내용으로 게시글 데이터 업데이트
-    public void updateOne(BoardDto dto) {
-
-        try (
-            Connection conn = getConnection();
-            Statement stmt = conn.createStatement();
-        ) {
-            stmt.executeUpdate(String.format(
-                    "update board set writer='%s', title='%s', " +
-                    "content='%s', regtime='%s' where num=%d",
-                    dto.getWriter(), dto.getTitle(), dto.getContent(),
-                    getCurrentTime(), dto.getNum()));
-
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    public boolean updateOne(BoardDto dto) {
+    	return session.update("boardMapper.update", dto) != 0?true:false;
     }
 
     // 지정된 글 번호의 레코드 삭제
-    public void deleteOne(int num) {
-
-        try (
-            Connection conn = getConnection();
-            Statement stmt = conn.createStatement();
-        ) {
-            stmt.executeUpdate("delete from board where num=" + num);
-
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    public boolean deleteOne(int num) {
+    	return session.update("boardMapper.delete", num) != 0?true:false;
     }
- */
 }
