@@ -17,6 +17,7 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="mybatis/sql/boardMapper.xml"/>
+		<mapper class="db.BoardMapper"/>
+		<mapper class="db.MemberMapper"/>
 	</mappers>
 </configuration>

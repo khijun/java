@@ -24,7 +24,7 @@
         <td>${msg.title}</td>
             <tr>
         <th class="w-auto table-light" style="text-align:center;">작성자</th>
-        <td>${msg.writer}</td>
+        <td>${msg.name}</td>
     </tr>
     <tr>
         <th class="w-auto table-light" style="text-align:center;">작성일시</th>

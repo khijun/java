@@ -1,4 +1,4 @@
-package db;
+package com.board.db;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,8 +13,7 @@ import lombok.ToString;
 @ToString
 public class BoardDto {
     private int    num     = 0;
-    private int writer  = 0;
-    private String name = "";
+    private String writer  = "";
     private String title   = "";
     private String content = "";
     private String regtime = "";

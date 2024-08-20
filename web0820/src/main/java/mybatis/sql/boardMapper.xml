@@ -13,7 +13,7 @@
  		 WHERE  RN BETWEEN ${start} AND #{listSize}
 	</select>
 	<select id="getOne" resultType = "db.BoardDto" parameterType="int">
-		select * from board where num = #{num}
+		select * from board where num #{num}
 	</select>
 	<insert id="insert" parameterType="db.BoardDto">
 		insert into board values(seq_board.nextval, #{writer}, #{title}, #{content},

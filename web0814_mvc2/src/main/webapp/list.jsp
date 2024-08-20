@@ -37,7 +37,7 @@
 						<td>${msg.num}</td>
 						<td style="text-align: left;"><a
 							href="view?num=${msg.num}&page=${param.page}"> ${msg.title} </a></td>
-						<td>${msg.writer}</td>
+						<td>${msg.name}</td>
 						<td>${msg.regtime}</td>
 						<td>${msg.hits}</td>
 					</tr>

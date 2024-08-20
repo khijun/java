@@ -1,5 +1,6 @@
-package db;
+package com.board.db;
 
+import java.sql.*;
 import java.time.*;
 import java.util.*;
 
@@ -10,17 +11,21 @@ import mybatis.SqlMapConfig;
 public class BoardDao {
 
 	SqlSession session;
-	private BoardMapper bm;
 	private static BoardDao dao = new BoardDao();
 	
     private BoardDao() {
     	session = SqlMapConfig.getSqlMapInstance().openSession(true);
-    	bm = session.getMapper(BoardMapper.class);
     }
     
     public static BoardDao getInstance() {
     	return dao;
     }
+    
+    public int countBoard2() {
+    	BoardMapper bm = session.getMapper(BoardMapper.class);
+    	return bm.countBoard();
+    }
+    
     // 현재 시간을 문자열 형태로 반환
     private String getCurrentTime() {
         return LocalDate.now() + " " +
@@ -29,34 +34,33 @@ public class BoardDao {
 
     // 게시글 갯수 얻기
     public int getNumRecords() {
-        return bm.getCount();
+        return session.selectOne("boardMapper.getCount");
     }
 
     // 게시글 리스트 읽기
-    public List<BoardDto> selectList(Map<String, Integer> param) {
-        return bm.getList(param);
+    public List<BoardDto> selectList(int start, int listSize) {
+		Map<String, Integer> param = new HashMap<String, Integer>();
+    	param.put("start", start);
+    	param.put("listSize", listSize);
+        return session.selectList("boardMapper.getList", param);
     }
 
     public BoardDto selectOne(int num) {
-    	return bm.getOne(num);
+    	return session.selectOne("boardMapper.getOne", num);
     }
     
-    public void insertOne(BoardDto dto) {
-    	System.out.println(dto);	// 테스트
+    public boolean insertOne(BoardDto dto) {
     	dto.setRegtime(getCurrentTime());
-    	bm.insert(dto);
+    	return session.insert("boardMapper.insert", dto) != 0?true:false;
     }
 
     // DTO에 담긴 내용으로 게시글 데이터 업데이트
-    public void updateOne(BoardDto dto) {
-    	bm.update(dto);
+    public boolean updateOne(BoardDto dto) {
+    	return session.update("boardMapper.update", dto) != 0?true:false;
     }
 
     // 지정된 글 번호의 레코드 삭제
-    public void deleteOne(int num) {
-    	bm.delete(num);
-    }
-    public void incrementHits(int num) {
-    	bm.incrementHits(num);
+    public boolean deleteOne(int num) {
+    	return session.update("boardMapper.delete", num) != 0?true:false;
     }
 }

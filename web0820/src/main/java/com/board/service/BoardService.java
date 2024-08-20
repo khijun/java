@@ -1,27 +1,19 @@
-package service;
+package com.board.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import db.*;
-
-import db.BoardDao;
-import db.BoardDto;
+import com.board.db.*;
 
 public class BoardService {
 
-	private MemberDao mdao = MemberDao.getInstance();
 	private BoardDao dao = BoardDao.getInstance();
     private static final int listSize = 3;
     private static final int paginationSize = 3;
 
     public List<BoardDto> getMsgList(int pageNo) {
-    	Map<String, Integer> param = new HashMap<String, Integer>();
-    	param.put("start", (pageNo-1) * listSize+1);
-    	param.put("listsize", pageNo * listSize);
-    	return dao.selectList(param);
+    	int start = (pageNo-1) * listSize+1;
+    	return dao.selectList(start, start+listSize-1);
     }
 
     public ArrayList<Pagination> getPagination(int pageNo) {
@@ -73,18 +65,18 @@ public class BoardService {
         return dao.selectOne(num);
     }
 
-    public void writeMsg(int writer, String title, String content)
+    public void writeMsg(String writer, String title, String content)
             throws Exception {
 
-        if (writer == 0||
-        	title   == null || title.length()   == 0 ||
+        if (writer  == null || writer.length()  == 0 ||
+            title   == null || title.length()   == 0 ||
             content == null || content.length() == 0) {
         	System.out.println("에러남?");
            throw new Exception("모든 항목이 빈칸 없이 입력되어야 합니다.");
         }
 
         BoardDto dto = new BoardDto();
-        dto.setWriter(writer);
+        dto.setWriter (writer );
         dto.setTitle  (title  );
         dto.setContent(content);
 
@@ -92,11 +84,11 @@ public class BoardService {
     }
 
     public void updateMsg(
-            String title, String content, int num)
+            String writer, String title, String content, int num)
                     throws Exception {
 
-        if (num == 0||
-        	title   == null || title.length()   == 0 ||
+        if (writer  == null || writer.length()  == 0 ||
+            title   == null || title.length()   == 0 ||
             content == null || content.length() == 0) {
 
            throw new Exception("모든 항목이 빈칸 없이 입력되어야 합니다.");
@@ -104,6 +96,7 @@ public class BoardService {
 
         BoardDto dto = new BoardDto();
         dto.setNum    (num    );
+        dto.setWriter (writer );
         dto.setTitle  (title  );
         dto.setContent(content);
 
@@ -112,17 +105,5 @@ public class BoardService {
 
     public void deleteMsg(int num) {
         dao.deleteOne(num);
-    }
-    
-    public boolean login(String id, String pw) {
-    	MemberDto dto = mdao.selectOneById(id);
-    	System.out.println(dto);
-    	return dto.getPw().equals(pw);
-    }
-    
-    public int getNoForLogin(String id, String pw) {
-    	MemberDto dto = mdao.selectOneById(id);
-    	int result = dto.getPw().equals(pw)?dto.getMemberNo():0;
-    	return result;
     }
 }

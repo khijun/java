@@ -27,14 +27,8 @@
             </td>
         </tr>
         <tr>
-            <th class = "table-light" style="text-align:center;">작성자</th>
-            <td><input type="text" name="writer" maxlength="20"
-                       value="${msg.writer}" class="w-100  form-control">
-            </td>
-        </tr>
-        <tr>
             <th class = "table-light" style="text-align:center;">내용</th>
-            <td style="height:200px;"><textarea name="content" class="w-100 h-100  form-control">${msg.content}</textarea>
+            <td style="height:400px;"><textarea name="content" class="w-100 h-100  form-control">${msg.content}</textarea>
             </td>
         </tr>
     </table>

@@ -20,11 +20,11 @@ SELECT  *
                          ORDER  BY NUM DESC) E)
  WHERE  RN BETWEEN 3 AND 6;
 
-insert into board values(SEQ_BOARD.NEXTVAL, 'È«±æµ¿', '±Û 1', '±ÛÀÇ ³»¿ë 1', '2017-07-30 10:10:11', 0);
-insert into board values(SEQ_BOARD.NEXTVAL, 'ÀÌ¼ø½Å', '±Û 2', '±ÛÀÇ ³»¿ë 2', '2017-07-30 10:10:12', 0);
-insert into board values(SEQ_BOARD.NEXTVAL, '°­°¨Âù', '±Û 3', '±ÛÀÇ ³»¿ë 3', '2017-07-30 10:10:13', 0);
-insert into board values(SEQ_BOARD.NEXTVAL, '±è¼ö·Î', '±Û 4', '±ÛÀÇ ³»¿ë 4', '2017-07-30 10:10:14', 0);
-insert into board values(SEQ_BOARD.NEXTVAL, 'Àå±æ»ê', '±Û 5', '±ÛÀÇ ³»¿ë 5', '2017-07-30 10:10:15', 0);
-insert into board values(SEQ_BOARD.NEXTVAL, '±è¼ö·Î', '±Û 6', '±ÛÀÇ ³»¿ë 6', '2017-07-30 10:10:16', 0);
-insert into board values(SEQ_BOARD.NEXTVAL, 'È«±æµ¿', '±Û 7', '±ÛÀÇ ³»¿ë 7', '2017-07-30 10:10:17', 0);
-insert into board values(SEQ_BOARD.NEXTVAL, 'ÀÌ¼ø½Å', '±Û 8', '±ÛÀÇ ³»¿ë 8', '2017-07-30 10:10:18', 0);
+insert into board values(SEQ_BOARD.NEXTVAL, 'í™ê¸¸ë™', 'ê¸€ 1', 'ê¸€ì˜ ë‚´ìš© 1', '2017-07-30 10:10:11', 0);
+insert into board values(SEQ_BOARD.NEXTVAL, 'ì´ìˆœì‹ ', 'ê¸€ 2', 'ê¸€ì˜ ë‚´ìš© 2', '2017-07-30 10:10:12', 0);
+insert into board values(SEQ_BOARD.NEXTVAL, 'ê°•ê°ì°¬', 'ê¸€ 3', 'ê¸€ì˜ ë‚´ìš© 3', '2017-07-30 10:10:13', 0);
+insert into board values(SEQ_BOARD.NEXTVAL, 'ê¹€ìˆ˜ë¡œ', 'ê¸€ 4', 'ê¸€ì˜ ë‚´ìš© 4', '2017-07-30 10:10:14', 0);
+insert into board values(SEQ_BOARD.NEXTVAL, 'ì¥ê¸¸ì‚°', 'ê¸€ 5', 'ê¸€ì˜ ë‚´ìš© 5', '2017-07-30 10:10:15', 0);
+insert into board values(SEQ_BOARD.NEXTVAL, 'ê¹€ìˆ˜ë¡œ', 'ê¸€ 6', 'ê¸€ì˜ ë‚´ìš© 6', '2017-07-30 10:10:16', 0);
+insert into board values(SEQ_BOARD.NEXTVAL, 'í™ê¸¸ë™', 'ê¸€ 7', 'ê¸€ì˜ ë‚´ìš© 7', '2017-07-30 10:10:17', 0);
+insert into board values(SEQ_BOARD.NEXTVAL, 'ì´ìˆœì‹ ', 'ê¸€ 8', 'ê¸€ì˜ ë‚´ìš© 8', '2017-07-30 10:10:18', 0);
