@@ -23,11 +23,11 @@
 <div style="width:100vw; height:100vh; display:flex; justify-content: center; align-items:center;">
 	<div class="border border-black" style="padding:50px;">
 		<form action="loginAction">
-		<div>
-			<p style="width:300px;">아이디:<input type="text" name="id"></p>
+		<div style="width:450px;">
+			<div style="width:100px;">아이디:</div><input type="text" name="id" style = "width:300px;">
 		</div>
 		<div>
-			<p style="width:300px;">비밀번호:</p><input type="password" name="pw">
+			비밀번호:<input type="password" name="pw" style = "position:relative; left:15px;">
 		</div>
 		<div>
 			<input type="submit" value="로그인" class = "btn btn-outline-primary">
